@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Anoop C. S. | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --text-dark: #0f172a;
+            --text-light: #475569;
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --meta-bg: #eff6ff;
+        }
+
+        [data-theme="dark"] {
+            --primary: #60a5fa;
+            --primary-light: #3b82f6;
+            --text-dark: #f8fafc;
+            --text-light: #cbd5e1;
+            --bg-light: #0f172a;
+            --border-color: #334155;
+            --white: #1e293b;
+            --card-bg: #1e293b;
+            --meta-bg: #1e3a8a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            opacity: 0.98;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.25rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Dark Mode Button Styles */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            width: 36px;
+            height: 36px;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        main {
+            padding-top: 5rem;
+        }
+
+        section {
+            padding: 3.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-light);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+
+        .hero-img {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero-location {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-email {
+            margin-bottom: 1rem;
+        }
+
+        .hero-email a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero-email a:hover {
+            text-decoration: underline;
+        }
+
+        /* Research Profiles Links */
+        .profile-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            background-color: var(--card-bg);
+            transition: var(--transition);
+        }
+
+        .profile-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Interests Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            background-color: var(--primary);
+            color: var(--bg-light);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Cards Architecture */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .card-meta {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            background-color: var(--meta-bg);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        [data-theme="dark"] .card-meta {
+            color: #ffffff;
+        }
+
+        .card-institution {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-details {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 0.5rem;
+        }
+
+        .card-details li {
+            position: relative;
+            padding-left: 1.25rem;
+            font-size: 0.925rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .card-details li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        /* Skills Layout */
+        .skills-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+
+        /* Publications Layout */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pub-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+        .pub-item:hover {
+            border-color: var(--primary-light);
+            padding-left: 1.75rem;
+        }
+
+        .pub-number {
+            font-weight: 700;
+            color: var(--primary-light);
+            min-width: 20px;
+        }
+
+        .pub-text {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        /* Teaching Layout */
+        .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .teaching-block h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            border-left: 3px solid var(--primary);
+            padding-left: 0.75rem;
+        }
+
+        .course-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .course-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem 1rem;
+            }
+            .nav-right {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+            main {
+                padding-top: 10rem;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .hero-img {
+                width: 140px;
+                height: 175px;
+            }
+            .profile-links {
+                justify-content: center;
+            }
+            .tags-container {
+                justify-content: center;
+            }
+            .card-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+            .card-meta {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Dr. Anoop C. S.</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#teaching">Teaching</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section id="about" class="hero">
+                <img src="profile.jpg" alt="Dr. Anoop C. S." class="hero-img" onerror="this.style.display='none'">
+                <div class="hero-content">
+                    <h1>Dr. Anoop C. S.</h1>
+                    <div class="hero-subtitle">Assistant Professor</div>
+                    <div class="hero-location">Dept. of Electronics and Communication Engineering</div>
+                    <div class="hero-location">Govt. Engineering College, Palakkad, Kerala, India</div>
+                    <div class="hero-email">e-mail: <a href="mailto:anoopcs@gecskp.ac.in">anoopcs@gecskp.ac.in</a></div>
+                    
+                    <div class="profile-links">
+                        <a href="https://scholar.google.com" target="_blank" class="profile-btn">
+                            Google Scholar
+                        </a>
+                        <a href="https://www.researchgate.net" target="_blank" class="profile-btn">
+                            ResearchGate
+                        </a>
+                    </div>
+
+                    <div class="tags-container">
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">Speech Recognition</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Signal Processing</span>
+                        <span class="tag">Natural Language Processing</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education">
+                <h3 class="section-title">Education</h3>
+                <div class="grid-layout">
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Ph.D. in Electrical Engineering</div>
+                            <div class="card-meta">2019 - 2023</div>
+                        </div>
+                        <div class="card-institution">Indian Institute of Science (IISc), Bengaluru, India</div>
+                        <ul class="card-details">
+                            <li>GPA: 8.8 / 10</li>
+                            <li>Supervisor: Prof. A. G. Ramakrishnan, Dept. of Electrical Engineering, IISc</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Master of Engineering (M.E.)</div>
+                            <div class="card-meta">2013 - 2015</div>
+                        </div>
+                        <div class="card-institution">Indian Institute of Science (IISc), Bengaluru, India</div>
+                        <ul class="card-details">
+                            <li>Specialisation: Signal Processing</li>
+                            <li>GPA: 6.7 / 8</li>
+                            <li>Supervisor: Prof. A. G. Ramakrishnan, Dept. of Electrical Engineering, IISc</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Bachelor of Technology (B.Tech.)</div>
+                            <div class="card-meta">2000 - 2004</div>
+                        </div>
+                        <div class="card-institution">Dept. of Electronics and Communication Engineering, College of Engineering, Thiruvananthapuram, Kerala, India</div>
+                        <ul class="card-details">
+                            <li>Aggregate: 81.62%</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="experience">
+                <h3 class="section-title">Experience</h3>
+                <div class="grid-layout">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Assistant Professor</div>
+                            <div class="card-meta">2025 - Present</div>
+                        </div>
+                        <div class="card-institution">Dept. of Electronics and Communication Engineering, Govt. Engineering College, Palakkad, Kerala, India</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Assistant Professor</div>
+                            <div class="card-meta">2022 - 2025</div>
+                        </div>
+                        <div class="card-institution">Dept. of Applied Electronics and Instrumentation, Govt. Engineering College, Kozhikode, Kerala, India</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Assistant Professor</div>
+                            <div class="card-meta">2010 - 2022</div>
+                        </div>
+                        <div class="card-institution">Dept. of Electronics and Communication Engineering, Govt. Engineering College, Sreekrishnapuram, Palakkad, Kerala, India</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Senior System Engineer</div>
+                            <div class="card-meta">2007 - 2010</div>
+                        </div>
+                        <div class="card-institution">IBM India Private Limited, Manyata Embassy Business Park, Outer Ring Road, Nagavara, Bengaluru</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Scientist B</div>
+                            <div class="card-meta">2006 - 2007</div>
+                        </div>
+                        <div class="card-institution">Govt. of India, New Delhi</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Programmer Analyst</div>
+                            <div class="card-meta">2004 - 2006</div>
+                        </div>
+                        <div class="card-institution">Cognizant Technology Solutions India Private Ltd., Chennai</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="skills">
+                <h3 class="section-title">Skills & Certifications</h3>
+                <div class="skills-section">
+                    
+                    <div class="skill-group">
+                        <h4>Languages</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">Shell</span>
+                            <span class="skill-item">C</span>
+                            <span class="skill-item">Java</span>
+                            <span class="skill-item">HTML</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Tools & Software</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Kaldi</span>
+                            <span class="skill-item">ESPNet</span>
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">HTK</span>
+                            <span class="skill-item">MATLAB</span>
+                            <span class="skill-item">Eclipse</span>
+                            <span class="skill-item">LaTeX</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Operating Systems</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Unix/Linux</span>
+                            <span class="skill-item">Windows</span>
+                            <span class="skill-item">Mac OS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Certifications & Memberships</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Sun Certified Java Programmer (SCJP)</span>
+                            <span class="skill-item">Sun Certified Web Component Developer (SCWCD)</span>
+                            <span class="skill-item">IEEE Member</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="publications">
+                <h3 class="section-title">Publications</h3>
+                <div class="pub-list">
+                    
+                    <div class="pub-item">
+                        <span class="pub-number">1</span>
+                        <span class="pub-text"><strong>Anoop C. S.</strong> and A. G. Ramakrishnan, “Suitability of syllable-based modeling units for end-to-end speech recognition in Sanskrit and other Indian languages“, <em>Expert Systems with Applications</em>, 2023.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">2</span>
+                        <span class="pub-text"><strong>Anoop C. S.</strong> and A. G. Ramakrishnan, “Meta-learning for Indian languages: Performance analysis and improvements with linguistic similarity measures“, <em>IEEE Access</em>, 2023.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">3</span>
+                        <span class="pub-text"><strong>Anoop C. S.</strong> and A. G. Ramakrishnan, “Exploring a unified ASR for multiple South Indian languages leveraging multilingual acoustic and language models“, <em>IEEE Spoken Language Technology Workshop (SLT)</em>, 2023.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">4</span>
+                        <span class="pub-text"><strong>Anoop C S</strong>, Prathosh A P, AG Ramakrishnan, “Unsupervised domain adaptation schemes for building ASR in low-resource languages“, <em>IEEE Automatic Speech Recognition and Understanding (ASRU) Workshop</em>, 2021.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">5</span>
+                        <span class="pub-text">Meghanani A., <strong>C. S. Anoop</strong> and A. G. Ramakrishnan, “An exploration of log-mel spectrogram features for Alzheimer’s dementia recognition from spontaneous speech“, <em>Proc. 8th IEEE Spoken Language Technology Workshop (SLT)</em>, 2021.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">6</span>
+                        <span class="pub-text">Meghanani A., <strong>C. S. Anoop</strong> and A. G. Ramakrishnan, ”Recognition of Alzheimer’s Dementia from the Transcriptions of Spontaneous Speech Using fastText and CNN Models“, <em>Frontiers in Computer Science</em>, 2021.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">7</span>
+                        <span class="pub-text"><strong>C. S. Anoop</strong> and A. G. Ramakrishnan, “Investigation of different G2P schemes for speech recognition in Sanskrit“, <em>International Conference on Neural Information Processing (ICONIP)</em>, 2021.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">8</span>
+                        <span class="pub-text"><strong>C. S. Anoop</strong> and A. G. Ramakrishnan, “CTC-based End-to-End ASR for the Low Resource Sanskrit Language with Spectrogram Augmentation“, <em>National Conference on Communications (NCC)</em>, 2021.</span>
+                    </div>
+
+                    <div class="pub-item">
+                        <span class="pub-number">9</span>
+                        <span class="pub-text"><strong>C. S. Anoop</strong> and A. G. Ramakrishnan, ”Automatic Speech Recognition for Sanskrit,” <em>2nd International Conference on Intelligent Computing, Instrumentation and Control Technologies (ICICICT)</em>, 2019.</span>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="teaching">
+                <h3 class="section-title">Teaching & Courses</h3>
+                <div class="accordion-container">
+                    
+                    <div class="teaching-block">
+                        <h4>APJ Abdul Kalam Technological University (KTU)</h4>
+                        <div class="course-cloud">
+                            <span class="course-badge">ECT463 Machine Learning</span>
+                            <span class="course-badge">221TEC004 Topics in Machine Learning</span>
+                            <span class="course-badge">EC202 Signals and Systems</span>
+                            <span class="course-badge">EC301 Digital Signal Processing</span>
+                            <span class="course-badge">EC370 Digital Image Processing</span>
+                            <span class="course-badge">EC201 Network Theory</span>
+                            <span class="course-badge">EC100 Basic Electronics Engineering</span>
+                            <span class="course-badge">HS 210 Life skills</span>
+                            <span class="course-badge">EC333 DSP Lab</span>
+                            <span class="course-badge">EC223 Electronic Design Automation Lab</span>
+                            <span class="course-badge">EST200 Design and Engineering</span>
+                            <span class="course-badge">AET304 Process Dynamics and Control</span>
+                        </div>
+                    </div>
+
+                    <div class="teaching-block">
+                        <h4>University of Calicut</h4>
+                        <div class="course-cloud">
+                            <span class="course-badge">EC09 501 Digital Signal Processing</span>
+                            <span class="course-badge">EC09 L25 Probability and Random Processes</span>
+                            <span class="course-badge">EC09 801 Data and Communication Networks</span>
+                            <span class="course-badge">EC04 803 Communication Switching Systems</span>
+                            <span class="course-badge">EC04 504 Electromagnetic Field Theory</span>
+                            <span class="course-badge">EC09 303 Network Analysis & Synthesis</span>
+                            <span class="course-badge">EC09 404 Analog Communication</span>
+                            <span class="course-badge">EC09 305 Digital Electronics</span>
+                            <span class="course-badge">EC09 604 Control Systems</span>
+                            <span class="course-badge">EC09 L25 Biomedical Instrumentation</span>
+                        </div>
+                    </div>
+
+                    <div class="teaching-block">
+                        <h4>Completed Research Courses</h4>
+                        <div class="course-cloud">
+                            <span class="course-badge">Machine Learning for Signal Processing</span>
+                            <span class="course-badge">Linear and Nonlinear Optimization</span>
+                            <span class="course-badge">Adaptive Signal Processing</span>
+                            <span class="course-badge">Probability Models</span>
+                            <span class="course-badge">Deep Learning Part 1 (NPTEL)</span>
+                            <span class="course-badge">Deep Learning Part 2 (NPTEL)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Dr. Anoop C. S. | Built with HTML & CSS</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggleBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggleBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+            }
+        });
+    </script>
+</body>
+</html>
